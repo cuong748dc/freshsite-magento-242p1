@@ -5,6 +5,7 @@ namespace Demo\GraphQL\Model\Resolver;
 
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\CatalogInventory\Model\Stock\StockItemRepository;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Exception\GraphQlNoSuchEntityException;
 use Magento\Framework\GraphQl\Query\Resolver\ContextInterface;
@@ -46,7 +47,7 @@ class GetProductByEntityId implements ResolverInterface
      * @param array|null $value
      * @param array|null $args
      * @return array|Value|mixed|null
-     * @throws GraphQlNoSuchEntityException
+     * @throws GraphQlNoSuchEntityException|NoSuchEntityException
      */
     public function resolve(Field $field, $context, ResolveInfo $info, array $value = null, array $args = null)
     {
