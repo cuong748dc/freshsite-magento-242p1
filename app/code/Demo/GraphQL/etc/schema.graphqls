@@ -1,0 +1,15 @@
+type Query {
+    TestCustomer(
+        email: String @doc(description: "email of the customer")
+    ): TestCustomer
+@resolver(class:"Demo\\GraphQL\\Model\\Resolver\\Customer")
+@doc(description:
+    "The TestCustomer query returns information about a customer")
+@cache(cacheable: false)
+}
+type TestCustomer @doc(description: "TestCustomer defines the customer name and other details") {
+    entity_id: Int
+    firstname: String
+    lastname: String
+    email: String
+}
