@@ -13,3 +13,19 @@ type TestCustomer @doc(description: "TestCustomer defines the customer name and 
     lastname: String
     email: String
 }
+
+type Query {
+    getProduct(
+        entity_id: Int @doc(description: "product entity id")
+    ): getProduct
+    @resolver(class:"Demo\\GraphQL\\Model\\Resolver\\GetProductByEntityId")
+    @doc(description:
+    "The TestCustomer query returns information about a customer")
+    @cache(cacheable: false)
+}
+type getProduct @doc(description: "get product by entity id") {
+    entity_id: Int
+    sku: String
+    price: Float
+    qty: Int
+}
